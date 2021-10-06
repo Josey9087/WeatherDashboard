@@ -12,8 +12,8 @@
     <h1 class="">Weather Dashboard</h1>
   </header>
   <section class="">
-    <div class="container">
-      <div class="row align-items-center">
+    <div class="mr-0 pr-0 ml-0 pl-0">
+      <div class="row">
         <div class="col-12 col-md-6 text-left">
           <h1>
             Search For a City
@@ -23,22 +23,32 @@
               <div class="form-group">
                 <input type="text" id="city-name" placeholder="Enter a city..." class="form-control" />
               </div>
-              <button class="btn custom-btn bg-primary">Search</button>
+              <button id="Yes" class="btn custom-btn bg-primary">Search</button>
               <hr class="">
-              <section>
+              <section id="city-input" class="container row col-md-4 ms-auto">
 
               </section>
             </form>
           </div>
         </div>
-        <div class="col-12 col-md-6">
-          <p class="">
-          </p>
+        <div class="col-12 col-md-6 align-items-right">
+          <div class="row">
+            <h1 id="CurrentDay"></h1>
+            <img id="wicon" src="" alt="">
+          </div>
+          <div class="column">
+            <p id="CurrentTemp"></p>
+            <p id="CurrentWind"></p>
+            <p id="CurrentHumidity"></p>
+          </div>
+          <div id="5Days" class="row m-10">
+          </div>
         </div>
       </div>
     </div>
   </section>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+<script src="script.js"></script>
 </body>
-<script src="./script.js"></script>
 </html>
