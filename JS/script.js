@@ -19,7 +19,7 @@ var CurrentHumidity = $('#CurrentHumidity')
 $("#Yes").click(function (event) {
   event.preventDefault()
   city = $("#city-name").val()
-  call = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + WeatherDashboardAPIKey;
+  call = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + WeatherDashboardAPIKey;
   fetch(call)
     .then(function (response) {
       return response.json();
@@ -129,7 +129,7 @@ $('#city-input').click(function (event) {
 
 // This is the same function as the first one in the file that is activated by an event click only this one is a stand alone function.
 function add(city) {
-  call = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + WeatherDashboardAPIKey;
+  call = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + WeatherDashboardAPIKey;
   fetch(call)
     .then(function (response) {
       return response.json();
