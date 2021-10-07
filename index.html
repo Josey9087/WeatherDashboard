@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <link
-    rel="stylesheet"
-    href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-  /><link>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+  <link>
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
   <header class="jumbotron">
     <h1 class="">Weather Dashboard</h1>
   </header>
-  <section class="">
+  <section class="container align-items-center">
     <div class="mr-0 pr-0 ml-0 pl-0">
       <div class="row">
         <div class="col-12 col-md-6 text-left">
@@ -25,8 +25,7 @@
               </div>
               <button id="Yes" class="btn custom-btn bg-primary">Search</button>
               <hr class="">
-              <section id="city-input" class="container row col-md-4 ms-auto">
-
+              <section id="city-input" class="container row col-md-6">
               </section>
             </form>
           </div>
@@ -40,6 +39,7 @@
             <p id="CurrentTemp"></p>
             <p id="CurrentWind"></p>
             <p id="CurrentHumidity"></p>
+            <p id="CurrentUV"></p>
           </div>
           <div id="5Days" class="row m-10">
           </div>
@@ -47,8 +47,9 @@
       </div>
     </div>
   </section>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-<script src="script.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+  <script src="script.js"></script>
 </body>
+
 </html>

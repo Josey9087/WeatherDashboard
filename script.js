@@ -1,15 +1,14 @@
 var WeatherDashboardAPIKey = "27127e631022b8f861292951b0145e8c";
-CityNames = $('#city-input');
-CurrentDay=$('#CurrentDay');
-NextDays=$('#5Days')
-CurrentTemp=$('#CurrentTemp')
-CurrentWind=$('#CurrentWind')
-CurrentHumidity=$('#CurrentHumidity')
-
+var CityNames = $('#city-input');
+var CurrentDay=$('#CurrentDay');
+var NextDays=$('#5Days')
+var CurrentTemp=$('#CurrentTemp')
+var CurrentWind=$('#CurrentWind')
+var CurrentHumidity=$('#CurrentHumidity')
 
 $( "#Yes" ).click(function(event) {
     event.preventDefault()
-    var city=$("#city-name").val()
+    city=$("#city-name").val()
     call= "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + WeatherDashboardAPIKey;
   fetch(call)
     .then(function (response) {
@@ -28,21 +27,36 @@ $( "#Yes" ).click(function(event) {
       $('#wicon').attr('src', iconurl);
       lat=data.coord.lat
       lon=data.coord.lon
-      call1="https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&units=imperial&appid=" +WeatherDashboardAPIKey;
-      get5days()
+      var call1="https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&units=imperial&appid=" +WeatherDashboardAPIKey;
+      get5days(call1)
     })
     });
 
   
-function get5days(){
-    fetch(call1)
+function get5days(url){
+    fetch(url)
     .then(function(response){
         console.log(response)
         return response.json();
     })
     .then(function (data) {
         console.log(data);
+        $('#CurrentUV').text("UV Index: " + data.daily[0].uvi)
+        if(data.daily[0].uvi<2){
+          $('#CurrentUV').addClass('bg-success')
+        }
+        if(data.daily[0].uvi<=3 && data.daily[0].uvi<=5){
+          $('#CurrentUV').addClass('bg-warning')
+        }
+        if(data.daily[0].uvi>5){
+          $('#CurrentUV').addClass('bg-danger')
+        }
         $("#5Days").empty()
+        $(".forecast").empty()
+        title=$('<h2>')
+        title.addClass('forecast')
+        title.text("5 Day Forecast")
+        title.insertBefore(NextDays)
       for (var i = 1; i < 6; i++) {
         new1 = $('<section>')
         $(new1).addClass('border')
@@ -71,7 +85,43 @@ function get5days(){
 
 $('#Yes').click(function(event){
     event.preventDefault();
+    var city=$("#city-name").val()
+    localStorage.setItem(city,city)
     var nameOfCity = $('<button>');
+    nameOfCity.addClass('btn btn-custom bg-primary')
     nameOfCity.text($('#city-name').val());
     CityNames.append(nameOfCity);
 })
+
+
+$('#city-input').click(function(event){
+      event.preventDefault();
+      tar= event.target
+      name1=tar.textContent
+      add()
+
+})
+
+
+function add(){
+call= "http://api.openweathermap.org/data/2.5/weather?q=" + name1 + "&units=imperial&appid=" + WeatherDashboardAPIKey;
+fetch(call)
+.then(function (response) {
+    console.log(response)
+  return response.json();
+})
+.then(function (data) {
+  console.log(data);
+  unixTime=moment.unix(data.dt);
+  CurrentDay.text(data.name + " (" + (unixTime.format("MM/DD/YYYY") + ") "))
+  CurrentTemp.text("Temp: " + data.main.temp )
+  CurrentWind.text("Wind: " + data.wind.speed)
+  CurrentHumidity.text("Humidity: " + data.main.humidity)
+  var iconcode = data.weather[0].icon;
+  var iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png";
+  $('#wicon').attr('src', iconurl);
+  lat=data.coord.lat
+  lon=data.coord.lon
+  call1="https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&units=imperial&appid=" +WeatherDashboardAPIKey;
+  get5days(call1)
+})}
