@@ -1,16 +1,21 @@
+<!-- Below is the code for the document to be able to deploy -->
 <!DOCTYPE html>
 <html>
+<!-- Below is the head element, it has code that links the Bootstrap and CSS files  -->
 
 <head>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
   <link>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="./CSS/style.css" />
 </head>
+<!-- Below is the body element that has the code that will be displayed on the page. -->
 
 <body>
+  <!-- Below is the header element which displays the header of the page -->
   <header class="jumbotron">
     <h1 class="">Weather Dashboard</h1>
   </header>
+  <!-- Below is the code displaying the search bar to the left, it is styled using bBotstrap. -->
   <section class="container align-items-center">
     <div class="mr-0 pr-0 ml-0 pl-0">
       <div class="row">
@@ -19,7 +24,7 @@
             Search For a City
           </h1>
           <div class="col-12 col-md-6">
-            <form id="">
+            <form>
               <div class="form-group">
                 <input type="text" id="city-name" placeholder="Enter a city..." class="form-control" />
               </div>
@@ -30,6 +35,7 @@
             </form>
           </div>
         </div>
+        <!-- Below is a section of code where the results of the search will be displayed. -->
         <div class="col-12 col-md-6 align-items-right">
           <div class="row">
             <h1 id="CurrentDay"></h1>
@@ -41,15 +47,17 @@
             <p id="CurrentHumidity"></p>
             <p id="CurrentUV"></p>
           </div>
+          <!-- Below is the section where the boxes displaying the next 5 days forecast will be appended. -->
           <div id="5Days" class="row m-10">
           </div>
         </div>
       </div>
     </div>
   </section>
+  <!-- Below is are the links that enable the usage of moment, JQuery and the link to the Javascript file. -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-  <script src="script.js"></script>
+  <script src="./JS/script.js"></script>
 </body>
 
 </html>
